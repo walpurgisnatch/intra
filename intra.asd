@@ -8,22 +8,23 @@
                "envy"
                "cl-ppcre"
                "uiop"
-
-               ;; for @route annotation
                "cl-syntax-annot"
-
-               ;; HTML Template
-               "djula"
-
-               ;; for DB
                "datafly"
-               "sxql")
+               "sxql"
+               "mito"
+               "cl-pass"
+               "jose"
+               "local-time")
   :components ((:module "src"
                 :components
                 ((:file "main" :depends-on ("config" "view" "db"))
+                 (:file "utils")
                  (:file "web" :depends-on ("view"))
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
-                 (:file "config"))))
+                 (:file "config")))
+               (:module "db"
+                :components
+                ((:file "schema"))))
   :description ""
   :in-order-to ((test-op (test-op "intra-test"))))
